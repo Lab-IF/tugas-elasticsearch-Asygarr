@@ -1,0 +1,24 @@
+{
+	"name": "Elasticsearch Codespace",
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"hostRequirements": {
+		"cpus": 16,
+		"memory": "64gb",
+		"storage": "128gb"
+	 },	 
+	"forwardPorts": [9200],
+	"extensions": [
+		"ms-azuretools.vscode-docker",
+		"esbenp.prettier-vscode",
+		"cweijan.vscode-es-client2",
+		"ms-vscode-remote.remote-containers",
+		"GitHub.copilot",
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"ms-python.pylint",
+		"GitHub.codespaces",
+		"GitHub.vscode-pull-request-github"
+	],
+	"postCreateCommand": "bash setup.sh"
+
+}

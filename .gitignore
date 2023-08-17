@@ -1,0 +1,6 @@
+/__pycache__
+/logstash-mongodb/logstash-mahasiswa/logstash_sqlite.db
+/logstash-mongodb/logstash-people/logstash_sqlite.db
+
+/result.json
+/nohup.out

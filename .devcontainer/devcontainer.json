@@ -1,0 +1,58 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/universal
+{
+	"name": "Elasticsearch Codespace",
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"hostRequirements": {
+	   "cpus": 16,
+	   "memory": "64gb",
+	   "storage": "128gb"
+	},
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [9200],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "nohup bash -c 'bash .devcontainer/setup.sh &'",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"ms-vscode-remote.remote-containers",
+				"ms-vscode-remote.remote-ssh",
+				"ms-vscode-remote.remote-ssh-edit",
+				"ms-vscode-remote.remote-wsl",
+				"ms-vscode-remote.vscode-remote-extensionpack",
+				"ms-vscode.vscode-typescript-tslint-plugin",
+				"msjsdiag.debugger-for-chrome",
+				"redhat.java",
+				"redhat.vscode-yaml",
+				"vscjava.vscode-java-debug",
+				"vscjava.vscode-java-dependency",
+				"vscjava.vscode-java-pack",
+				"vscjava.vscode-java-test",
+				"vscjava.vscode-maven",
+				"yzhang.markdown-all-in-one",
+				"ms-azuretools.vscode-docker",
+				"esbenp.prettier-vscode",
+				"cweijan.vscode-es-client2",
+				"ms-vscode-remote.remote-containers",
+				"GitHub.copilot",
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-python.pylint",
+				"GitHub.codespaces",
+				"GitHub.vscode-pull-request-github"
+		
+			]
+		}
+	}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

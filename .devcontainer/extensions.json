@@ -1,0 +1,14 @@
+{
+	"recommendations": [
+		"ms-azuretools.vscode-docker",
+		"esbenp.prettier-vscode",
+		"cweijan.vscode-es-client2",
+		"ms-vscode-remote.remote-containers",
+		"GitHub.copilot",
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"ms-python.pylint",
+		"GitHub.codespaces",
+		"GitHub.vscode-pull-request-github"
+	]
+}
