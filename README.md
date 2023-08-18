@@ -40,6 +40,9 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 Jalankan perintah berikut dari folder .devcontainer :
 `docker-compose up -d` (menghidupkan elesaticsearch di docker)
 
+Jika terjadi error seperti di tahap ini maka jalankan :
+`cd .devcontainer` lalu jalankan kembali perintah di atas
+
 ## 2. Install Logstash
 Download dan install Public Signing Key, yang fungsi nya untuk memverifikasi paket yang di download dari repository elastic.co :
 `wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic-keyring.gpg`
