@@ -1,10 +1,12 @@
-GET _cat/indices
+GET _search
 
 {
     "query": {
-        "query_string": {
-            "query": "larry",
-            "fields": ["Name"]
+        "bool": {
+            "must": [
+                { "match": { "nama": "Asygar" } },
+                { "match": { "angkatan": 2021 } }
+            ]
         }
     },
     "size": 10,

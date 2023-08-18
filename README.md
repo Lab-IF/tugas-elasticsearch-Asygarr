@@ -6,12 +6,10 @@ The vm.max_map_count kernel setting must be set to at least 262144 for productio
 
 How you set vm.max_map_count depends on your platform.
 
-To view the current value for the vm.max_map_count setting, run:
-
+Untuk melihat nilai saat ini pengaturan vm.max_map_count, jalankan:
 `grep vm.max_map_count /etc/sysctl.conf`
 
-To apply the setting on a live system, run:
-
+Untuk menerapkan pengaturan pada sistem, jalankan:
 `sysctl -w vm.max_map_count=262144`
 
 To permanently change the value for the vm.max_map_count setting, update the value in /etc/sysctl.conf.
@@ -19,7 +17,6 @@ To permanently change the value for the vm.max_map_count setting, update the val
 Untuk mengatur vm.max_map_count agar berlaku secara permanen, Anda perlu mengedit file konfigurasi sysctl.conf. Berikut adalah langkah-langkah yang dapat Anda ikuti:
 
 Buka file sysctl.conf menggunakan editor teks seperti nano atau vi. Jalankan perintah berikut dengan akses root atau menggunakan sudo:
-
 `sudo nano /etc/sysctl.conf`
 
 Di dalam file sysctl.conf, tambahkan baris berikut:
@@ -32,7 +29,6 @@ Atau dengan perintah berikut:
 
 
 Terapkan perubahan yang baru saja Anda buat dengan menjalankan perintah berikut:
-
 `sudo sysctl -p`
 
 Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
@@ -42,32 +38,27 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 
 ## 1. Install Elasticsearch
 Jalankan perintah berikut dari folder .devcontainer :
-`docker-compose up -d`
+`docker-compose up -d` (menghidupkan elesaticsearch di docker)
 
 ## 2. Install Logstash
-Download and install the Public Signing Key:
-
+Download dan install Public Signing Key, yang fungsi nya untuk memverifikasi paket yang di download dari repository elastic.co :
 `wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic-keyring.gpg`
 
-You may need to install the apt-transport-https package on Debian before proceeding:
-
+Install apt-transport-https di debian sebelum melanjutkan, yang berfungsi untuk mengizinkan apt untuk menggunakan repositori melalui HTTPS:
 `sudo apt-get install apt-transport-https`
 
-Save the repository definition to /etc/apt/sources.list.d/elastic-8.x.list:
-
+Save repository definition ke /etc/apt/sources.list.d/elastic-8.x.list, yang berfungsi untuk menambahkan repository elastic.co ke dalam daftar repository yang ada di debian :
 `echo "deb [signed-by=/usr/share/keyrings/elastic-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list`
 
-Run sudo apt-get update and the repository is ready for use. You can install it with:
-
+Jalankan perintah berikut untuk menginstall logstash :
 `sudo apt-get update && sudo apt-get install logstash`
 
 
-Install Plugin
-
+Install Plugin untuk logstash, yaitu plugin untuk input data dari mongodb :
 `sudo /usr/share/logstash/bin/logstash-plugin install logstash-input-mongodb`
 
 Copy config file
-sesuaikan file config sebelum di copy
+sesuaikan file config sebelum di copy, fungsinya untuk menghubungkan logstash dengan mongodb :
 `sudo cp logstash-people.conf /etc/logstash/conf.d/logstash.conf`
 
 Buat Folder :
@@ -75,14 +66,28 @@ Buat Folder :
 
 Buat Index :
 
-Contoh menggunakan nama index = people
-
+Contoh menggunakan nama index = people :
 `curl --location --request PUT 'http://localhost:9200/people' --header 'Content-Type: application/json' --data '{
     "settings": { "number_of_shards": 5, "number_of_replicas": 1 }
 }'`
 
-Jalanin Logstash
-
+Jalankan Logstash :
 `sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf`
 
+## 3. Ketika keluar dan memulai kembali (menyalakan kembali)
+Pertama kita jalankan perintah 
+`sudo sysctl -p` untuk mengaktifkan vm.max_map_count
 
+Kemudian kita jalankan perintah untuk menghidupkan kembali elasticsearch :
+`docker-compose up -d`
+
+Kemudian kita jalankan perintah untuk menghidupkan kembali logstash :
+`sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf` atau `sudo apt-get update && sudo apt-get install logstash`
+
+Kemudian kita install kembali plugin untuk logstash :
+`sudo /usr/share/logstash/bin/logstash-plugin install logstash-input-mongodb`
+
+## 4. Menjalankan file latihan.es untuk menacari query dari elasticsearch
+
+Disklaimer :
+Maaf pak saya tidak bisa membuatkan video karena terkendala device yang saya miliki, saya hanya bisa membuatkan dokumentasi saja. Terima kasih pak.
