@@ -12,7 +12,7 @@ Untuk melihat nilai saat ini pengaturan vm.max_map_count, jalankan:
 Untuk menerapkan pengaturan pada sistem, jalankan:
 `sysctl -w vm.max_map_count=262144`
 
-To permanently change the value for the vm.max_map_count setting, update the value in /etc/sysctl.conf.
+Untuk mengubah nilai secara permanen untuk pengaturan vm.max_map_count, perbarui nilai di /etc/sysctl.conf.
 
 Untuk mengatur vm.max_map_count agar berlaku secara permanen, Anda perlu mengedit file konfigurasi sysctl.conf. Berikut adalah langkah-langkah yang dapat Anda ikuti:
 
