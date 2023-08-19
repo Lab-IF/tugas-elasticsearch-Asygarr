@@ -36,14 +36,14 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 
 
 
-## 1. Install Elasticsearch
+## 1. Install Elasticsearch pertama kali
 Jalankan perintah berikut dari folder .devcontainer :
 `docker-compose up -d` (menghidupkan elesaticsearch di docker)
 
 Jika terjadi error seperti di tahap ini maka jalankan :
 `cd .devcontainer` lalu jalankan kembali perintah di atas
 
-## 2. Install Logstash
+## 2. Install Logstash pertama kali
 Download dan install Public Signing Key, yang fungsi nya untuk memverifikasi paket yang di download dari repository elastic.co :
 `wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic-keyring.gpg`
 
@@ -81,16 +81,42 @@ Jalankan Logstash :
 Pertama kita jalankan perintah 
 `sudo sysctl -p` untuk mengaktifkan vm.max_map_count
 
+Kemudian kita masuk ke folder .devcontainer :
+`cd .devcontainer`
+
 Kemudian kita jalankan perintah untuk menghidupkan kembali elasticsearch :
 `docker-compose up -d`
 
 Kemudian kita jalankan perintah untuk menghidupkan kembali logstash :
-`sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf` atau `sudo apt-get update && sudo apt-get install logstash`
+`sudo apt-get update && sudo apt-get install logstash`
 
 Kemudian kita install kembali plugin untuk logstash :
 `sudo /usr/share/logstash/bin/logstash-plugin install logstash-input-mongodb`
 
-## 4. Menjalankan file latihan.es untuk menacari query dari elasticsearch
+## 4. Menjalankan Logstash mahasiswa
+Copy config file
+sesuaikan file config sebelum di copy, fungsinya untuk menghubungkan logstash dengan mongodb :
+`sudo cp logstash-mahasiswa.conf /etc/logstash/conf.d/logstash.conf`
+
+untuk mengecek apakah logstash sudah berjalan atau belum, bisa dengan menjalankan perintah berikut :
+`curl -X GET "localhost:9200/_cat/indices?v&pretty"`
+
+cara menampilkan datanya dengan menjalankan perintah berikut :
+`curl -X GET "localhost:9200/mahasiswa/_search?pretty"`
+
+## 5. Menjalankan Logstash people
+Copy config file
+sesuaikan file config sebelum di copy, fungsinya untuk menghubungkan logstash dengan mongodb :
+`sudo cp logstash-people.conf /etc/logstash/conf.d/logstash.conf`
+
+untuk mengecek apakah logstash sudah berjalan atau belum, bisa dengan menjalankan perintah berikut :
+`curl -X GET "localhost:9200/_cat/indices?v&pretty"`
+
+cara menampilkan seluruh data di terminal dengan menjalankan perintah berikut :
+`curl -X GET "localhost:9200/people/_search?pretty"`
+
+
+## 6. Menjalankan file latihan.es untuk menacari query dari elasticsearch
 
 Disklaimer :
 Maaf pak saya tidak bisa membuatkan video karena terkendala device yang saya miliki, saya hanya bisa membuatkan dokumentasi saja. Terima kasih pak.
