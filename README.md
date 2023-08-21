@@ -100,3 +100,6 @@ cara menampilkan seluruh data di terminal dengan menjalankan perintah berikut :
 
 
 ## 6. Jalankan file latihan.es untuk menacari query dari elasticsearch
+
+## 7. Video dokkumentasi penginstalan elasticsearch dan logstash
+https://drive.google.com/file/d/15Qp9KNllyEP-DGuwJEWvDrM1fDFdmhfA/view?usp=sharing
