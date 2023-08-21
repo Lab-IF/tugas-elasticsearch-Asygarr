@@ -60,23 +60,6 @@ Jalankan perintah berikut untuk menginstall logstash :
 Install Plugin untuk logstash, yaitu plugin untuk input data dari mongodb :
 `sudo /usr/share/logstash/bin/logstash-plugin install logstash-input-mongodb`
 
-Copy config file
-sesuaikan file config sebelum di copy, fungsinya untuk menghubungkan logstash dengan mongodb :
-`sudo cp logstash-people.conf /etc/logstash/conf.d/logstash.conf`
-
-Buat Folder :
-`mkdir logstash/logstash-people`
-
-Buat Index :
-
-Contoh menggunakan nama index = people :
-`curl --location --request PUT 'http://localhost:9200/people' --header 'Content-Type: application/json' --data '{
-    "settings": { "number_of_shards": 5, "number_of_replicas": 1 }
-}'`
-
-Jalankan Logstash :
-`sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf`
-
 ## 3. Ketika keluar dan memulai kembali (menyalakan kembali)
 Pertama kita jalankan perintah 
 `sudo sysctl -p` untuk mengaktifkan vm.max_map_count
@@ -116,7 +99,4 @@ cara menampilkan seluruh data di terminal dengan menjalankan perintah berikut :
 `curl -X GET "localhost:9200/people/_search?pretty"`
 
 
-## 6. Menjalankan file latihan.es untuk menacari query dari elasticsearch
-
-Disklaimer :
-Maaf pak saya tidak bisa membuatkan video karena terkendala device yang saya miliki, saya hanya bisa membuatkan dokumentasi saja. Terima kasih pak.
+## 6. Jalankan file latihan.es untuk menacari query dari elasticsearch
