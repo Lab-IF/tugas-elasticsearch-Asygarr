@@ -36,7 +36,7 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 
 
 
-## 1. Install Elasticsearch pertama kali
+## 1. Install Elasticsearch
 - Jalankan perintah berikut dari folder .devcontainer :
 `docker-compose up -d` (menghidupkan elesaticsearch di docker)
 
@@ -48,7 +48,7 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 
 
 
-## 2. Install Logstash pertama kali
+## 2. Install Logstash
 - Download dan install Public Signing Key, yang fungsi nya untuk memverifikasi paket yang di download dari repository elastic.co :
 `wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic-keyring.gpg`
 
@@ -64,20 +64,40 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 - Install Plugin untuk logstash, yaitu plugin untuk input data dari mongodb :
 `sudo /usr/share/logstash/bin/logstash-plugin install logstash-input-mongodb`
 
-- Copy file config logstash-people.conf ke folder /etc/logstash/conf.d/ :
-`sudo cp logstash-people.conf /etc/logstash/conf.d/logstash.conf`
 
-- Melakukan import data menggunakan logstash, yaitu import data dari mongodb ke elasticsearch :
-`sudo /usr/share/logstash/bin/logstash -f logstash-people.conf`
 
-- copy file config logstash-mahasiswa.conf ke folder /etc/logstash/conf.d/ :
-`sudo cp logstash-mahasiswa.conf /etc/logstash/conf.d/logstash.conf`
-
-- Melakukan import data menggunakan logstash, yaitu import data dari mongodb ke elasticsearch :
-`sudo /usr/share/logstash/bin/logstash -f logstash-mahasiswa.conf`
-
+## 3. Import data dari mongodb ke elasticsearch dengan logstash
 - Buat Connection, dengan cara masuk ke noSQL pada side bar, lalu create connection dan save, maka akan tampil index mahasiswa dan people di elasticsearch
 
+### Import data people
+* Copy file config logstash-people.conf ke folder /etc/logstash/conf.d/ :
+`sudo cp logstash-people.conf /etc/logstash/conf.d/logstash.conf`
+
+* Buat index people :
+`curl --location --request PUT 'http://localhost:9200/people' --header 'Content-Type: application/json' --data '{
+    "settings": { "number_of_shards": 5, "number_of_replicas": 1 }
+}'`
+
+* Melakukan import data menggunakan logstash, yaitu import data dari mongodb ke elasticsearch :
+`sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf` atau `sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash-people.conf`
+
+* Untuk stop logstash :
+`ctrl + c`
+
+### Import data mahasiswa
+* copy file config logstash-mahasiswa.conf ke folder /etc/logstash/conf.d/ :
+`sudo cp logstash-mahasiswa.conf /etc/logstash/conf.d/logstash.conf`
+
+* Buat index mahasiswa :
+`curl --location --request PUT 'http://localhost:9200/mahasiswa' --header 'Content-Type: application/json' --data '{
+    "settings": { "number_of_shards": 5, "number_of_replicas": 1 }
+}'`
+
+* Melakukan import data menggunakan logstash, yaitu import data dari mongodb ke elasticsearch :
+`sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf`
+
+* Untuk stop logstash :
+`ctrl + c`
 
 
 ## 3. Ketika keluar dan memulai kembali (menyalakan kembali)
@@ -99,10 +119,6 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 
 
 ## 4. Menjalankan Logstash mahasiswa
-Copy config file
-sesuaikan file config sebelum di copy, fungsinya untuk menghubungkan logstash dengan mongodb :
-`sudo cp logstash-mahasiswa.conf /etc/logstash/conf.d/logstash.conf`
-
 untuk mengecek apakah logstash sudah berjalan atau belum, bisa dengan menjalankan perintah berikut :
 `curl -X GET "localhost:9200/_cat/indices?v&pretty"`
 
@@ -112,10 +128,6 @@ cara menampilkan datanya dengan menjalankan perintah berikut :
 
 
 ## 5. Menjalankan Logstash people
-Copy config file
-sesuaikan file config sebelum di copy, fungsinya untuk menghubungkan logstash dengan mongodb :
-`sudo cp logstash-people.conf /etc/logstash/conf.d/logstash.conf`
-
 untuk mengecek apakah logstash sudah berjalan atau belum, bisa dengan menjalankan perintah berikut :
 `curl -X GET "localhost:9200/_cat/indices?v&pretty"`
 

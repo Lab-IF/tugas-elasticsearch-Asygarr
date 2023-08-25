@@ -4,7 +4,7 @@ GET _search
     "query": {
         "bool": {
             "must": [
-                { "match": { "prodi": "informatika" } },
+                { "match": { "Name": "Muhammad" } },
                 { "match": { "angkatan": 2021 } }
             ]
         }
