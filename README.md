@@ -73,6 +73,9 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 * Copy file config logstash-people.conf ke folder /etc/logstash/conf.d/ :
 `sudo cp logstash-people.conf /etc/logstash/conf.d/logstash.conf`
 
+* Buat folder :
+`mkdir logstash/logstash-people`
+
 * Buat index people :
 `curl --location --request PUT 'http://localhost:9200/people' --header 'Content-Type: application/json' --data '{
     "settings": { "number_of_shards": 5, "number_of_replicas": 1 }
@@ -87,6 +90,9 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 ### Import data mahasiswa
 * copy file config logstash-mahasiswa.conf ke folder /etc/logstash/conf.d/ :
 `sudo cp logstash-mahasiswa.conf /etc/logstash/conf.d/logstash.conf`
+
+* Buat folder :
+`mkdir logstash/logstash-mahasiswa`
 
 * Buat index mahasiswa :
 `curl --location --request PUT 'http://localhost:9200/mahasiswa' --header 'Content-Type: application/json' --data '{
