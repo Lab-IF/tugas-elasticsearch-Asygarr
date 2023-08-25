@@ -4,12 +4,12 @@ GET _search
     "query": {
         "bool": {
             "must": [
-                { "match": { "nama": "Asygar" } },
+                { "match": { "prodi": "informatika" } },
                 { "match": { "angkatan": 2021 } }
             ]
         }
     },
-    "size": 10,
+    "size": 100,
     "from": 0,
     "sort": []
 }

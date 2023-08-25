@@ -70,6 +70,8 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 - Lakukan import data people dengan cara masuk ke file import-people.py, kemudian jalankan di file tersebut, atau bisa dengan menjalankan perintah berikut :
 `python import-people.py`
 
+- Buat Connection, dengan cara masuk ke noSQL pada side bar, lalu create connection dan save, maka akan tampil index mahasiswa dan people di elasticsearch
+
 
 
 ## 3. Ketika keluar dan memulai kembali (menyalakan kembali)
