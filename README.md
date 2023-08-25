@@ -100,7 +100,7 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 `ctrl + c`
 
 
-## 3. Ketika keluar dan memulai kembali (menyalakan kembali)
+## 4. Ketika keluar dan memulai kembali (menyalakan kembali)
 - Pertama kita jalankan perintah
 `sudo sysctl -p` untuk mengaktifkan vm.max_map_count
 
@@ -118,7 +118,7 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 
 
 
-## 4. Menjalankan Logstash mahasiswa
+## 5. Menjalankan Logstash mahasiswa
 untuk mengecek apakah logstash sudah berjalan atau belum, bisa dengan menjalankan perintah berikut :
 `curl -X GET "localhost:9200/_cat/indices?v&pretty"`
 
@@ -127,7 +127,7 @@ cara menampilkan datanya dengan menjalankan perintah berikut :
 
 
 
-## 5. Menjalankan Logstash people
+## 6. Menjalankan Logstash people
 untuk mengecek apakah logstash sudah berjalan atau belum, bisa dengan menjalankan perintah berikut :
 `curl -X GET "localhost:9200/_cat/indices?v&pretty"`
 
@@ -136,12 +136,12 @@ cara menampilkan seluruh data di terminal dengan menjalankan perintah berikut :
 
 
 
-## 6. Jalankan file latihan.es untuk menacari query dari elasticsearch
+## 7. Jalankan file latihan.es untuk menacari query dari elasticsearch
 Masuk ke file latihan.es, isi query yang dibutuhkan kemudian klik execute di bagian atas kiri pada file latihan.es unutk melakukan pencarian query di elasticsearch
 
 
 
-## 7. Video dokkumentasi penginstalan awal elasticsearch dan logstash
+## 8. Video dokkumentasi penginstalan awal elasticsearch dan logstash
 https://drive.google.com/file/d/15pWJRE026AbTGoyh8ETxbOmkldy6IC_T/view?usp=sharing
 
 
