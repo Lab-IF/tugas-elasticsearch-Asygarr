@@ -64,11 +64,17 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 - Install Plugin untuk logstash, yaitu plugin untuk input data dari mongodb :
 `sudo /usr/share/logstash/bin/logstash-plugin install logstash-input-mongodb`
 
-- Lakukan import data mahasiswa dengan cara masuk ke file import-mahasiswa.py, kemudian jalankan di file tersebut, atau bisa dengan menjalankan perintah berikut :
-`python import-mahasiswa.py`
+- Copy file config logstash-people.conf ke folder /etc/logstash/conf.d/ :
+`sudo cp logstash-people.conf /etc/logstash/conf.d/logstash.conf`
 
-- Lakukan import data people dengan cara masuk ke file import-people.py, kemudian jalankan di file tersebut, atau bisa dengan menjalankan perintah berikut :
-`python import-people.py`
+- Melakukan import data menggunakan logstash, yaitu import data dari mongodb ke elasticsearch :
+`sudo /usr/share/logstash/bin/logstash -f logstash-people.conf`
+
+- copy file config logstash-mahasiswa.conf ke folder /etc/logstash/conf.d/ :
+`sudo cp logstash-mahasiswa.conf /etc/logstash/conf.d/logstash.conf`
+
+- Melakukan import data menggunakan logstash, yaitu import data dari mongodb ke elasticsearch :
+`sudo /usr/share/logstash/bin/logstash -f logstash-mahasiswa.conf`
 
 - Buat Connection, dengan cara masuk ke noSQL pada side bar, lalu create connection dan save, maka akan tampil index mahasiswa dan people di elasticsearch
 
