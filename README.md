@@ -37,44 +37,58 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 
 
 ## 1. Install Elasticsearch pertama kali
-Jalankan perintah berikut dari folder .devcontainer :
+- Jalankan perintah berikut dari folder .devcontainer :
 `docker-compose up -d` (menghidupkan elesaticsearch di docker)
 
-Jika terjadi error seperti di tahap ini maka jalankan :
+- Jika terjadi error seperti di tahap ini maka jalankan :
 `cd .devcontainer` lalu jalankan kembali perintah di atas
 
+- Setelah elasticsearch sudah berjalan di docker maka kita bisa keluar dari folder .devcontainer :
+`cd ..`
+
+
+
 ## 2. Install Logstash pertama kali
-Download dan install Public Signing Key, yang fungsi nya untuk memverifikasi paket yang di download dari repository elastic.co :
+- Download dan install Public Signing Key, yang fungsi nya untuk memverifikasi paket yang di download dari repository elastic.co :
 `wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic-keyring.gpg`
 
-Install apt-transport-https di debian sebelum melanjutkan, yang berfungsi untuk mengizinkan apt untuk menggunakan repositori melalui HTTPS:
+- Install apt-transport-https di debian sebelum melanjutkan, yang berfungsi untuk mengizinkan apt untuk menggunakan repositori melalui HTTPS:
 `sudo apt-get install apt-transport-https`
 
-Save repository definition ke /etc/apt/sources.list.d/elastic-8.x.list, yang berfungsi untuk menambahkan repository elastic.co ke dalam daftar repository yang ada di debian :
+- Save repository definition ke /etc/apt/sources.list.d/elastic-8.x.list, yang berfungsi untuk menambahkan repository elastic.co ke dalam daftar repository yang ada di debian :
 `echo "deb [signed-by=/usr/share/keyrings/elastic-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list`
 
-Jalankan perintah berikut untuk menginstall logstash :
+- Jalankan perintah berikut untuk menginstall logstash :
 `sudo apt-get update && sudo apt-get install logstash`
 
-
-Install Plugin untuk logstash, yaitu plugin untuk input data dari mongodb :
+- Install Plugin untuk logstash, yaitu plugin untuk input data dari mongodb :
 `sudo /usr/share/logstash/bin/logstash-plugin install logstash-input-mongodb`
+
+- Lakukan import data mahasiswa dengan cara masuk ke file import-mahasiswa.py, kemudian jalankan di file tersebut, atau bisa dengan menjalankan perintah berikut :
+`python import-mahasiswa.py`
+
+- Lakukan import data people dengan cara masuk ke file import-people.py, kemudian jalankan di file tersebut, atau bisa dengan menjalankan perintah berikut :
+`python import-people.py`
+
+
 
 ## 3. Ketika keluar dan memulai kembali (menyalakan kembali)
-Pertama kita jalankan perintah 
+- Pertama kita jalankan perintah
 `sudo sysctl -p` untuk mengaktifkan vm.max_map_count
 
-Kemudian kita masuk ke folder .devcontainer :
+- Kemudian kita masuk ke folder .devcontainer :
 `cd .devcontainer`
 
-Kemudian kita jalankan perintah untuk menghidupkan kembali elasticsearch :
+- Kemudian kita jalankan perintah untuk menghidupkan kembali elasticsearch :
 `docker-compose up -d`
 
-Kemudian kita jalankan perintah untuk menghidupkan kembali logstash :
+- Kemudian kita jalankan perintah untuk menghidupkan kembali logstash :
 `sudo apt-get update && sudo apt-get install logstash`
 
-Kemudian kita install kembali plugin untuk logstash :
+- Kemudian kita install kembali plugin untuk logstash :
 `sudo /usr/share/logstash/bin/logstash-plugin install logstash-input-mongodb`
+
+
 
 ## 4. Menjalankan Logstash mahasiswa
 Copy config file
@@ -87,6 +101,8 @@ untuk mengecek apakah logstash sudah berjalan atau belum, bisa dengan menjalanka
 cara menampilkan datanya dengan menjalankan perintah berikut :
 `curl -X GET "localhost:9200/mahasiswa/_search?pretty"`
 
+
+
 ## 5. Menjalankan Logstash people
 Copy config file
 sesuaikan file config sebelum di copy, fungsinya untuk menghubungkan logstash dengan mongodb :
@@ -98,11 +114,17 @@ untuk mengecek apakah logstash sudah berjalan atau belum, bisa dengan menjalanka
 cara menampilkan seluruh data di terminal dengan menjalankan perintah berikut :
 `curl -X GET "localhost:9200/people/_search?pretty"`
 
+
+
 ## 6. Jalankan file latihan.es untuk menacari query dari elasticsearch
 Masuk ke file latihan.es, isi query yang dibutuhkan kemudian klik execute di bagian atas kiri pada file latihan.es unutk melakukan pencarian query di elasticsearch
 
+
+
 ## 7. Video dokkumentasi penginstalan awal elasticsearch dan logstash
 https://drive.google.com/file/d/15pWJRE026AbTGoyh8ETxbOmkldy6IC_T/view?usp=sharing
+
+
 
 ## 8. Video dokumentasi ingin memulai kembali elasticsearch dan logstash
 https://drive.google.com/file/d/1SRJCbPutPd4X2wO6AeB4eCZPPKo8-qRm/view?usp=sharing
