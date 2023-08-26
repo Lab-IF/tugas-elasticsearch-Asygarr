@@ -111,6 +111,8 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 
 
 ## 4. Ketika keluar dan memulai kembali (menyalakan kembali)
+Jika data sudah di import dan kita keluar dari docker, maka ketika kita ingin menghidupkan kembali elasticsearch dan logstash kita harus mengikuti langkah-langkah berikut :
+
 - Pertama kita jalankan perintah
 `sudo sysctl -p` untuk mengaktifkan vm.max_map_count
 
@@ -151,10 +153,5 @@ Masuk ke file latihan.es, isi query yang dibutuhkan kemudian klik execute di bag
 
 
 
-## 8. Video dokkumentasi penginstalan awal elasticsearch dan logstash
+## 8. Video dokkumentasi penginstalan awal elasticsearch dan logstash dan pengimportan data dari mongodb ke elasticsearch
 https://drive.google.com/file/d/15pWJRE026AbTGoyh8ETxbOmkldy6IC_T/view?usp=sharing
-
-
-
-## 8. Video dokumentasi ingin memulai kembali elasticsearch dan logstash
-https://drive.google.com/file/d/1SRJCbPutPd4X2wO6AeB4eCZPPKo8-qRm/view?usp=sharing
