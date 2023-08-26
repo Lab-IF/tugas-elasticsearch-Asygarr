@@ -154,4 +154,4 @@ Masuk ke file latihan.es, isi query yang dibutuhkan kemudian klik execute di bag
 
 
 ## 8. Video dokkumentasi penginstalan awal elasticsearch dan logstash dan pengimportan data dari mongodb ke elasticsearch
-https://drive.google.com/file/d/15pWJRE026AbTGoyh8ETxbOmkldy6IC_T/view?usp=sharing
+https://drive.google.com/file/d/1xXa55MrJOw4c8mVKZyN7uZRuZghZ__jx/view?usp=sharing
