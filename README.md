@@ -69,6 +69,9 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 ## 3. Import data dari mongodb ke elasticsearch dengan logstash
 - Buat Connection, dengan cara masuk ke NoSQL pada side bar, lalu create connection dan save
 
+- Buat folder logstash : 
+`mkdir logstash`
+
 ### Import data people
 * Copy file config logstash-people.conf ke folder /etc/logstash/conf.d/ :
 `sudo cp logstash-people.conf /etc/logstash/conf.d/logstash.conf`
