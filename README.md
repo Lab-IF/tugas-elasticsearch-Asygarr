@@ -67,7 +67,7 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 
 
 ## 3. Import data dari mongodb ke elasticsearch dengan logstash
-- Buat Connection, dengan cara masuk ke noSQL pada side bar, lalu create connection dan save, maka akan tampil index mahasiswa dan people di elasticsearch
+- Buat Connection, dengan cara masuk ke NoSQL pada side bar, lalu create connection dan save
 
 ### Import data people
 * Copy file config logstash-people.conf ke folder /etc/logstash/conf.d/ :
@@ -82,7 +82,7 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 }'`
 
 * Melakukan import data menggunakan logstash, yaitu import data dari mongodb ke elasticsearch :
-`sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf` atau `sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash-people.conf`
+`sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf`
 
 * Untuk stop logstash :
 `ctrl + c`
@@ -106,6 +106,7 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 `ctrl + c`
 
 
+
 ## 4. Ketika keluar dan memulai kembali (menyalakan kembali)
 - Pertama kita jalankan perintah
 `sudo sysctl -p` untuk mengaktifkan vm.max_map_count
@@ -124,7 +125,7 @@ Untuk Mengeceknya bisa dengan menjalankan perintah berikut:
 
 
 
-## 5. Menjalankan Logstash mahasiswa
+## 5. Melihat data mahasiswa di terminal
 untuk mengecek apakah logstash sudah berjalan atau belum, bisa dengan menjalankan perintah berikut :
 `curl -X GET "localhost:9200/_cat/indices?v&pretty"`
 
@@ -133,7 +134,7 @@ cara menampilkan datanya dengan menjalankan perintah berikut :
 
 
 
-## 6. Menjalankan Logstash people
+## 6. Melihat data people di terminal
 untuk mengecek apakah logstash sudah berjalan atau belum, bisa dengan menjalankan perintah berikut :
 `curl -X GET "localhost:9200/_cat/indices?v&pretty"`
 

@@ -5,7 +5,7 @@ GET _search
         "bool": {
             "must": [
                 { "match": { "Name": "Muhammad" } },
-                { "match": { "angkatan": 2021 } }
+                { "match": { "Gender": "Male" } }
             ]
         }
     },
