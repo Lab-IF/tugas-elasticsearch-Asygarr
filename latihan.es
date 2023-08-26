@@ -1,21 +1,17 @@
-GET _search
-
+GET people/_search
 {
   "query": {
-    "bool": {
-      "must": [
-        { "match": { "Name": "Muhammad" } },
-        { "match": { "Gender": "Male" } }
-      ]
+    "match": {
+      "Country": "germany"
     }
   },
   "size": 100,
   "from": 0,
   "sort": [],
   "aggs": {
-    "jumlah_jenis_kelamin": {
+    "Negara_german": {
       "terms": {
-        "field": "Gender"
+        "field": "Country.keyword"
       }
     }
   }
