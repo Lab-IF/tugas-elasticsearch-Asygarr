@@ -10,8 +10,8 @@ GET people/_search
   "sort": [],
   "aggs": {
     "Negara_german": {
-      "terms": {
-        "field": "Country.keyword"
+      "avg": {
+        "field": "AgeOfDeath"
       }
     }
   }
